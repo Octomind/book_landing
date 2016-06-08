@@ -1,0 +1,400 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* 
+------------------------------------------------------------------- 
+	Leanding page 3 month
+------------------------------------------------------------------- 
+*/
+
+/* 
+------------------------------------------------------------------- 
+	ico
+------------------------------------------------------------------- 
+*/
+.sprite-lending-promo {
+	background: url(../images/lending-promo/sprite-lending-promo.png) no-repeat;
+}
+.ico-lending {
+	width: 95px;
+	height: 95px;
+}
+.ico-lending-2 {
+	width: 50px;
+	height: 50px;
+}
+.ico-4-1 {
+	background-position: -55px -60px;
+}
+.ico-4-2 {
+	background-position: -250px -60px;
+}
+.ico-4-3 {
+	background-position: -55px -255px;
+}
+.ico-4-4 {
+	background-position: -250px -250px;
+}
+.ico-6-1 {
+	background-position: -60px -455px;
+}
+.ico-6-2 {
+	background-position: -250px -455px;
+}
+.ico-6-3 {
+	background-position: -60px -655px;
+}
+.ico-6-4 {
+	background-position: -250px -655px;
+}
+.ico-7-1 {
+	background-position: -75px -875px;
+}
+/* 
+------------------------------------------------------------------- 
+	Footer Landing 
+------------------------------------------------------------------- 
+*/
+
+.body-landing {
+	margin-bottom: 250px; /* Margin bottom by footer height */
+}
+.footer-landing {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 259px; /* Set the fixed height of the footer here */
+}
+.footer-landing div.row {
+	margin-top: 25px;
+}
+.footer-landing li {
+	padding-top: 8px;
+}
+.footer-landing a.social {
+	padding-left: 35px;
+	padding-bottom: 15px;
+}
+
+@media (min-width: 100px) and (max-width: 767px) {
+.footer-landing {
+	text-align: center;
+}
+}
+/* 
+------------------------------------------------------------------- 
+	Block 1
+------------------------------------------------------------------- 
+*/
+
+.bl-content-1 {
+	color: #FFFFFF;
+	padding-bottom: 10px;
+}
+.bg-1 {
+	background: url(../images/lending-promo/bg-1.jpg) repeat-x;
+}
+.bg-2 {
+	background: url(../images/lending-promo/bg-2.jpg) repeat-x;
+}
+.bl-content-1 p {
+	font-size: 14px;
+}
+.bl-content-1 h1 {
+	margin-top: 10px;
+	font-size: 30px;
+}
+
+@media (max-width: 991px) {
+.bl-content-1 .img-responsive {
+	display: inherit;
+}
+.bl-content-1 .media .media-left {
+	display: inherit;
+	padding: 0px;
+}
+.bl-content-1 .media .media-heading {
+	text-align: center;
+	margin-top: 0px;
+}
+}
+/* 
+------------------------------------------------------------------- 
+	Block 2
+------------------------------------------------------------------- 
+
+
+.bl-content-2 {
+	background-color: #4B4B4B;
+	color: #FFFFFF;
+	margin: 0px;
+}
+.square {
+	width: 10px;
+	height: 10px;
+	background-color: #FFFFFF;
+	margin-top: 5px;
+	margin-right: 5px;
+}
+.bl-content-2 div.media {
+	margin-bottom: 30px;
+}
+.bl-content-2 span {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+*/
+/* 
+------------------------------------------------------------------- 
+	Block 3
+------------------------------------------------------------------- 
+*/
+
+.bl-content-3 {
+	background: url(../images/bg-presentation.jpg) repeat-x;
+}
+.main-pic-1 {
+	background: url(../images/lending-promo/main-pic-1.png) no-repeat;
+	background-position: -40px bottom;
+}
+.main-pic-2 {
+	background: url(../images/lending-promo/main-pic-2.png) no-repeat;
+	background-position: 0px bottom;
+}
+.bl-content-3 .left-block {
+	width: 525px;
+}
+.bl-content-3 .main-pic-2 .left-block {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+.bl-content-3 .bg-left-1 {
+	background: url(../images/lending-promo/bg-right-1.png);
+	color: #0c3257;
+	padding: 15px;
+	margin-top: 15px;
+}
+.bl-content-3 .bg-left-1 h2 {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	font-size: 24px;
+	font-weight: bold;
+}
+.bl-content-3 .bg-left-1 p {
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+.bl-content-3 .bg-left-2 {
+	background: url(../images/lending-promo/bg-right-2.png);
+	font-size: 18px;
+	padding: 15px;
+}
+.bl-content-3 .bg-left-2 .font-1 {
+	color: #00600b;
+	font-weight: bold;
+}
+.bl-content-3 .bg-left-2 .font-2 {
+	color: #00600b;
+	font-size: 30px;
+}
+.bl-content-3 .bg-left-3 {
+	background: url(../images/lending-promo/bg-right-3.png);
+	padding: 15px;
+	padding-top: 10px;
+	width: 450px;
+}
+.bg-left-3 .txt-h {
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	color: #3b62a0;
+}
+
+
+#day-1, #day-2, #hour-1, #hour-2, #minutes-1, #minutes-2, #second-1, #second-2 {
+	background-color: #3b62a0;
+	font-size: 36px;
+	color: #FFFFFF;
+	text-align: center;
+	width: 45px;
+	float: left;
+	font-weight: bold;
+}
+#day-1, #hour-1, #minutes-1, #second-1 {
+	margin-right: 2px;
+}
+.bg-left-3 .dots {
+	font-size: 40px;
+	color: #3b62a0;
+	font-weight: bold;
+	text-align: center;
+	width: 17px;
+	float: left;
+	line-height: 45px;
+}
+.bg-left-3 .txt {
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	text-align: center;
+	width: 90px;
+	color: #3b62a0;
+	margin-right: 20px;
+}
+.bg-left-3 .txt.last {
+	margin-right: 0px;
+}
+.bg-left-4 {
+	font-size: 12px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+.bg-left-4 p {
+	margin-top: 10px;
+}
+
+@media (max-width: 991px) {
+.main-pic-1, .main-pic-2   {
+	background: none;
+}
+.bl-content-3 .left-block {
+	width: auto;
+}
+.bl-content-3 .bg-left-3 {
+	width: 455px;
+}
+}
+
+@media (max-width: 532px) {
+.bl-content-3 .bg-left-1 {
+	background: url(../images/lending-promo/bg-right-1.png);
+	font-size: 24px;
+}
+.bl-content-3 .bg-left-3 {
+	width: 252px;
+}
+.bg-left-3 .txt-h {
+	font-size: 14px;
+}
+#day-1, #day-2, #hour-1, #hour-2, #minutes-1, #minutes-2, #second-1, #second-2 {
+	font-size: 19px;
+	width: 20px;
+}
+.bg-left-3 .dots {
+	font-size: 18px;
+	line-height: 22px;
+	width: 15px;
+}
+.bg-left-3 .txt {
+	font-size: 12px;
+	width: 45px;
+	margin-right: 12px;
+}
+.bl-content-3 .bg-left-2 .font-2 {
+	color: #00600b;
+	font-size: 22px;
+}
+}
+/* 
+------------------------------------------------------------------- 
+	Block 4
+------------------------------------------------------------------- 
+*/
+
+.bl-content-4 {
+	background-color: #F9F9F9;
+	margin: 0px;
+	padding-bottom: 20px;
+	font-size: 18px;
+}
+.bl-content-4 .ico-lending {
+	margin-bottom: 10px;
+}
+
+@media (max-width: 767px) {
+.bl-content-4 .col-sm-3 {
+	margin-bottom: 20px;
+}
+}
+/* 
+------------------------------------------------------------------- 
+	Block 5
+------------------------------------------------------------------- 
+*/
+
+.bl-content-5 {
+	padding-bottom: 30px;
+	background: url(../images/bg-mail.jpg);
+}
+.bl-content-5 .media-left {
+	padding: 0px;
+}
+.bl-content-5 .media-left div {
+	background-color: #FFFFFF;
+	color: #1a5d99;
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
+	width: 50px;
+	border-radius: 100%;
+	margin-right: 15px;
+}
+.bl-content-5 .media-body {
+	font-size: 18px;
+}
+.bl-content-5 .bt {
+	margin-top: 20px;
+	text-align: center;
+}
+
+@media (max-width: 767px) {
+.bl-content-5 .col-sm-4 {
+	margin-bottom: 20px;
+}
+}
+/* 
+------------------------------------------------------------------- 
+	Block 6
+------------------------------------------------------------------- 
+*/
+
+.bl-content-6 {
+	background-color: #F9F9F9;
+	margin: 0px;
+	padding-bottom: 20px;
+}
+.bl-content-6 .media-body {
+	font-size: 18px;
+}
+
+@media (max-width: 532px) {
+.bl-content-6 .media {
+	margin-bottom: 20px;
+}
+}
+/* 
+------------------------------------------------------------------- 
+	Block 7
+------------------------------------------------------------------- 
+*/
+
+.bl-content-7 {
+	background-color: #4b4b4b;
+	margin: 0px;
+	padding-bottom: 20px;
+}
+.bl-content-7 p {
+	margin-top: 20px;
+}
+
+@media (max-width: 767px) {
+.bl-content-7 .media {
+	margin-bottom: 10px;
+	margin-top: 0px;
+}
+.bl-content-7 p {
+	margin-top: 10px;
+}
+}
