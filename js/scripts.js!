@@ -1,0 +1,196 @@
+// JavaScript Document
+
+//table from datatables.net
+/*	
+$(document).ready(function() {
+	
+	$('#sms-other-country-price').DataTable( {
+		"info": false,
+		 "lengthMenu": [[10, 20, 50, 100, -1], [10, 20, 50, 100, "Все"]],
+		 "language": {
+            "zeroRecords": "По вашему запросу ничего не найдено",
+			"lengthMenu": "Показывать на странице _MENU_",
+			"sSearch": "Поиск"
+        }
+
+    } );
+	
+} );
+*/
+
+
+
+			
+//Selector Activate			
+$(function() {	
+    function SelectLoadScript() {
+		$('[data-toggle="popover"]').popover();
+   	 	$('select').selectpicker();
+   		$('[type=checkbox]').bootstrapToggle();
+	}
+	$('.modal').on('loaded.bs.modal', SelectLoadScript);
+	SelectLoadScript();
+});	
+			
+
+
+
+
+//Modal vertical center
+$(function() {
+    function reposition() {
+        var modal = $(this),
+        dialog = modal.find('.modal-dialog');
+        modal.css('display', 'block');
+        // Dividing by two centers the modal exactly, but dividing by three 
+        // or four works better for larger screens.
+        dialog.css("margin-top", Math.max(0, ($(window).height() - dialog.height()) / 2));
+    }
+    // Reposition when a modal is shown
+    $('.modal').on('show.bs.modal', reposition);
+    // Reposition when the window is resized
+    $(window).on('resize', function() {
+        $('.modal:visible').each(reposition);
+    });	
+	
+	
+	$('.fullHeight').on('show.bs.modal', function () {
+    $('.modal .modal-body').css('overflow-y', 'auto'); 
+    $('.modal .modal-body').css('max-height', $(window).height() * 0.7);
+    });
+	
+});
+
+/*
+http://codepen.io/dimbslmh/pen/mKfCc?editors=011
+*/
+
+
+function calcEmailPrice(){
+	var cnt_subscribers = parseInt($('#cnt_subscribers').val());
+	var cnt_mail 		= parseInt($('#cnt_mail').val());
+	if(isNaN( cnt_subscribers)){
+		cnt_subscribers = 0;
+	} 
+	if(isNaN(cnt_mail)){
+		cnt_mail = 0;
+	} 
+ 	var summ = cnt_subscribers * cnt_mail;
+	var min_packet = 0;
+	var min_summ = -1;
+	$('#tmp').empty();
+	var tmp_summ = 0;
+	var tmp_cnt = 0;
+	for (key in tarifs) {
+		if(tarifs[key]['cnt_mails'] > summ){
+			tmp_summ = tarifs[key]['price'];
+
+			tmp_mail_prepaid = tarifs[key]['cnt_mails'];
+			tmp_mail_additional = 0;
+		} else {
+			tmp_summ = tarifs[key]['price'] + ( summ - tarifs[key]['cnt_mails']) * tarifs[key]['price_additional'];
+			tmp_mail_prepaid = tarifs[key]['cnt_mails'];
+			tmp_mail_additional = summ - tarifs[key]['cnt_mails'];
+		}
+		//$('#tmp').append('sum='+tmp_summ+"<br>");
+		if((tmp_summ < min_summ) || (min_summ == -1)){
+			min_summ = tmp_summ;
+			optimal_packet = key;
+			optimal_name = tarifs[key]['name'];
+			optimal_summ = tmp_summ;
+			optimal_mail_prepaid = tmp_mail_prepaid.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+ 			optimal_mail_additional = tmp_mail_additional;
+		}
+	}
+	var current_valute = valutes[$('#currency option:selected').val()];
+	
+	optimal_summ = optimal_summ * current_valute['course'];
+ 	$('.currency_price').html( current_valute['name_show']);
+	
+	$('.calc_packet').html(optimal_name);
+	$('.calc_price').html(Math.round(optimal_summ*100)/100);
+	$('#cnt_prepaid').html( optimal_mail_prepaid );
+	if(optimal_mail_additional > 0 ){
+		ppc = optimal_mail_additional +"";
+		$('#cnt_additional').html( ppc.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ') );
+		$('#additional_block').removeClass('hide');
+	} else {
+		$('#additional_block').addClass('hide');
+	}
+}
+
+
+
+function calcSmsPrice(){
+	var cnt_sms   = parseInt($('#cnt_sms').val());
+	if(isNaN(cnt_sms)){
+		cnt_sms = 0;
+	} 
+	
+	var price_one = parseFloat($('#country_sms option:selected').val());
+	var current_valute = valutes[$('#currency_sms option:selected').val()];
+	price_one = price_one * current_valute['course'];
+	price_one = Math.round(price_one * 100)/100;
+	var price = cnt_sms * price_one;
+	
+	sms_price = Math.round(price * 100)/100 + " " + current_valute['name_show'];
+	$('#sms_price').html(sms_price);	
+	return false;
+}
+function goUrl(url){
+	document.location.href = url;	
+}
+
+function subscribe(el){
+	$(".has-error").removeClass('has-error');
+	var name = $('#sub_name');	
+	var email = $('#sub_email');	
+	var ok = 1;
+	if(name.val() == '' ||  name.val() == name.attr('rel')){
+		name.closest('.form-group').addClass('has-error');	
+		ok = 0;
+	}
+	if(email.val() == '' ||  email.val() == email.attr('rel')){
+		email.closest('.form-group').addClass('has-error');	
+		ok = 0;
+	}
+	if(!validateEmail(email.val())){
+		email.closest('.form-group').addClass('has-error');	
+		ok = 0;
+	} 
+	if(ok == 1){
+		$.post('/ajax/subscribe.php',{ name: name.val(), email:email.val()}, function(data) {
+			$('#subscriebeform').closest('.container').html(data);
+		});
+	}
+	return false;
+	
+}
+
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
+
+function TariffСurrency(){
+	var valute = $('#currency_tariff option:checked').val();
+	$('.tarifpacket').each(function(){
+		var id = $(this).attr('id');
+		$(this).find('.price_additional').html("+ "+packets[id][valute]['price_additional']);
+		$(this).find('.pricemonth').html(packets[id][valute]['price']);
+	})
+	$('.tariff-sms').each(function(){
+		var id = $(this).attr('id');
+		$(this).find('span').html(sms[id][valute]['price']);
+	})
+	$(".sms_price_1").addClass('hide');
+	$(".sms_price_2").addClass('hide');
+	$(".sms_price_3").addClass('hide');
+	$(".sms_price_"+valute).removeClass('hide');
+	
+}
+
+
+$('#tariffs-sms').on('hidden.bs.collapse', function () {
+ // do something…
+})
